@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  hangfiretest:
+    image: hangfiretest
+    build:
+      context: .
+      dockerfile: HangFireTest/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6001:80"
+    networks:
+      - postgres-compose-network
+
+networks: 
+  postgres-compose-network:
+    driver: bridge
